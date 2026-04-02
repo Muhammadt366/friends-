@@ -51,7 +51,7 @@ class $modify(AppDelegate) {
 
 
 $execute {
-	listenForAllSettingChanges([](auto v) {
+	listenForAllSettingChanges([](std::string_view key, std::shared_ptr<SettingV3> setting) {
 		if (petLayer) {
 			petLayer->updateValues();
 		}
