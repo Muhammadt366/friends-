@@ -14,22 +14,22 @@ jobs:
         - name: Windows
           os: windows-latest
           target: Win32
-          platform: windows
+          
 
         - name: macOS
           os: macos-latest
           target: MacOS
-          platform: macos
+          
 
         - name: Android32
           os: ubuntu-latest
           target: Android32
-          platform: android32
+        
 
         - name: Android64
           os: ubuntu-latest
           target: Android64
-          platform: android64
+          
 
     name: ${{ matrix.config.name }}
     runs-on: ${{ matrix.config.os }}
@@ -37,13 +37,12 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - name: Build the mod
+     - name: Build the mod
       uses: geode-sdk/build-geode-mod@main
       id: build
       with:
         combine: true
         target: ${{ matrix.config.target }}
-        platform: ${{ matrix.config.platform }}
 
     - name: Upload artifacts
       uses: actions/upload-artifact@v4
